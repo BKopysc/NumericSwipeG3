@@ -15,7 +15,7 @@ const TileVariants = {
 	SIX = "6",
 	SEVEN = "7",
 	EIGHT = "8",
-	NINTE = "9"
+	NINE = "9"
 	}
 
 func getTileVariants():
