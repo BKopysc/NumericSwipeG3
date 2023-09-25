@@ -14,3 +14,15 @@ func _process(delta):
 func _on_basic_timer_timeout():
 	timer_ctr += 1
 	$GameHud.update_timer(timer_ctr)
+
+
+
+func _on_game_hud_game_paused(state):
+	if(state):
+		$BasicTimer.stop()
+	else:
+		$BasicTimer.start()
+
+
+func _on_game_hud_game_exit():
+	get_tree().change_scene_to_file("res://main.tscn")

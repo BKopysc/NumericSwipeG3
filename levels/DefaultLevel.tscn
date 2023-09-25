@@ -13,4 +13,6 @@ script = ExtResource("1_qgpfx")
 
 [node name="BasicTimer" type="Timer" parent="."]
 
+[connection signal="game_exit" from="GameHud" to="." method="_on_game_hud_game_exit"]
+[connection signal="game_paused" from="GameHud" to="." method="_on_game_hud_game_paused"]
 [connection signal="timeout" from="BasicTimer" to="." method="_on_basic_timer_timeout"]

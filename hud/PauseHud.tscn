@@ -39,6 +39,7 @@ offset_right = 30.0
 offset_bottom = 44.5
 grow_horizontal = 2
 theme = ExtResource("1_70xdv")
+theme_override_font_sizes/font_size = 30
 text = "Pause"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
@@ -48,10 +49,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -67.5
-offset_top = -98.5
-offset_right = 67.5
-offset_bottom = -21.5
+offset_left = -84.0
+offset_top = -106.5
+offset_right = 85.0
+offset_bottom = -25.5
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -59,10 +60,15 @@ grow_vertical = 0
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="ReasumeButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_70xdv")
 text = "Resume"
 
 [node name="ExitButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_70xdv")
 text = "Exit"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

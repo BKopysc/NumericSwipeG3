@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal resume_pressed
+signal exit_pressed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +17,11 @@ func hide_layer():
 
 func show_layer():
 	$CanvasLayer.show()
+
+
+func _on_resume_button_pressed():
+	resume_pressed.emit()
+	
+
+func _on_exit_button_pressed():
+	exit_pressed.emit()
