@@ -1,14 +1,9 @@
-[gd_scene format=3 uid="uid://ba5xxh4mqr5rb"]
+[gd_scene format=2]
 
-[node name="BackgroundLayer" type="Node2D"]
+[node name="Background" type="CanvasLayer"]
+layer = -10
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
+[node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.552941, 0.694118, 0.917647, 1)
+color = Color( 0.317647, 0.501961, 0.8, 1 )
