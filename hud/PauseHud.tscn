@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://brfjnexif3q6m"]
+
+[ext_resource type="Script" path="res://hud/PauseHud.gd" id="1_01opr"]
+[ext_resource type="Theme" uid="uid://cv4gjy0legidb" path="res://assets/basic_theme.tres" id="1_70xdv"]
+
+[node name="PauseHud" type="CanvasLayer"]
+script = ExtResource("1_01opr")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.32549)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -119.5
+offset_right = 130.5
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.396078, 0.431373, 0.466667, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = 21.5
+offset_right = 30.0
+offset_bottom = 44.5
+grow_horizontal = 2
+theme = ExtResource("1_70xdv")
+text = "Pause"
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.5
+offset_top = -98.5
+offset_right = 67.5
+offset_bottom = -21.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ReasumeButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="ExitButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"

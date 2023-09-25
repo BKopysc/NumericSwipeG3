@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3qxurnq0yw62"]
+
+[ext_resource type="Texture2D" uid="uid://bhetasadtnwdu" path="res://assets/hud/logo.svg" id="1_41stt"]
+[ext_resource type="Script" path="res://main.gd" id="1_m75ug"]
+[ext_resource type="Theme" uid="uid://cv4gjy0legidb" path="res://assets/basic_theme.tres" id="2_6spko"]
+[ext_resource type="PackedScene" uid="uid://ba5xxh4mqr5rb" path="res://hud/background.tscn" id="4_urwwy"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_m75ug")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = -16.0
+offset_right = 268.0
+offset_bottom = 384.0
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+size_flags_horizontal = 4
+texture = ExtResource("1_41stt")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 51.0
+offset_right = 105.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("2_6spko")
+text = "Play"
+
+[node name="ScoresButton" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("2_6spko")
+text = "Scores"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("2_6spko")
+text = "Settings"
+
+[node name="BackgroundLayer" parent="." instance=ExtResource("4_urwwy")]
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
