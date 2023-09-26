@@ -17,6 +17,7 @@ func _ready():
 	set_tiles(6, 48)
 
 func set_tiles(xy_tiles, tile_size):
+	randomize()
 	var current_x = 0
 	var current_y = 0
 	
@@ -104,7 +105,49 @@ func _end_line(pos:Vector2):
 
 func _calc_tiles():
 	print(current_tiles)
-
+	var row_direction = 1 if (current_tiles[1].x - current_tiles[0].x) > 0 else -1 #prawo
+	var col_direction = 1 if (current_tiles[1].y - current_tiles[0].y) > 0 else -1 #dol
+	
+	if(current_tiles[1].x == current_tiles[0].x):
+		row_direction = 0
+	elif(current_tiles[1].y == current_tiles[0].y):
+		col_direction = 0
+	
+	var tiles_to_check = []
+	
+	#TILE CAPTURING
+	
+	if(row_direction == 0):
+		var row = current_tiles[0].x
+		var start = current_tiles[0].y
+		var end = current_tiles[1].y
+		
+		if(start > end):
+			end -= 1
+		else:
+			end+=1
+			
+		for n in range(start, end, col_direction):
+			var check_tile = {loc= Vector2(row, n), val= tile_arr[row][n]}
+			tiles_to_check.append(check_tile)
+			
+	elif(col_direction == 0):
+		var column = current_tiles[0].y
+		var start = current_tiles[0].x
+		var end = current_tiles[1].x
+		
+		if(start > end):
+			end -= 1
+		else:
+			end+=1
+		
+		for n in range(start, end, row_direction):
+			var check_tile = {loc= Vector2(n,column), val= tile_arr[n][column]}
+			tiles_to_check.append(check_tile)
+	
+	#TILE CHECKING
+	
+	
 
 func _on_LineTimer_timeout():
 	$LineRect.hide()
