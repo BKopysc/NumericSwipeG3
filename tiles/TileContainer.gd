@@ -6,34 +6,44 @@ export var tile_scene: PackedScene
 # var b = "text"
 
 signal moved
+signal game_end
 
 var line_started: bool = false
 var tile_arr= []
 var tile_child_arr=[]
 var current_tiles = []
+var cleared=0
+var max_score=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tile_arr = _create_map(6,6)
+	max_score = 6*6
 	tile_child_arr = _create_map(6,6)
 	_reset_current_tiles()
-	set_tiles(6, 48)
+	_set_tiles(6, 48, Global.level_selected)
 	#print(tile_child_arr)
+	
 
-func set_tiles(xy_tiles, tile_size):
+func _set_tiles(xy_tiles, tile_size, level):
 	randomize()
 	var current_x = 0
 	var current_y = 0
 	
+	var random_range = 10 if level == 0 else 100
+	
 	for n in xy_tiles:
 		for m in xy_tiles:
-			var value = randi() % 10
+			var value = randi() % random_range
 			var loc = Vector2(n,m)
 			var tile = tile_scene.instance()
 			var x= m*tile_size
 			var y= n*tile_size
 			tile.set_position(Vector2(x,y))
-			tile.set_tile(str(value), value,loc)
+			if(level == 0):
+				tile.set_tile(str(value), value,loc)
+			else:
+				tile.set_tile(Global.TileVariants.DEFAULT, value, loc)
 			tile.connect("pressed", self, "_on_tile_pressed")
 			$Container.add_child(tile)
 			tile_arr[n][m] = value
@@ -172,8 +182,12 @@ func _calc_tiles():
 		var tile_check_y = tiles_to_check[n].loc.y
 		$Container.get_child(tile_child_arr[tile_check_x][tile_check_y]).hide_tile()
 		tile_arr[tile_check_x][tile_check_y] = -1
+		cleared += 1
 		
 	emit_signal("moved", true)
+	
+	if(cleared == max_score):
+		emit_signal("game_end")
 
 func _on_LineTimer_timeout():
 	$LineRect.hide()

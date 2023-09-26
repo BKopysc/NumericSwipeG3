@@ -66,10 +66,7 @@ func _on_SimpleTile_gui_input(event):
 	if(event is InputEventMouseButton and event.pressed):
 		$SelectedTexture.show()
 		emit_signal("pressed", self.rect_position, self.location)
-	elif(event is InputEventMouseMotion):
-		if(!$HoverTexture.visible):
-			$HoverTexture.show()
-			
+
 
 func hide_tile():
 	$TileTexture/TileLabel.hide()
