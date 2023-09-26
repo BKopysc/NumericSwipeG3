@@ -39,5 +39,13 @@ func _on_TileContainer_moved(is_success):
 
 func _on_TileContainer_game_end():
 	var score = timer_ctr*move_ctr
-	Global.set_previous_game(timer_ctr, move_ctr, score)
+	Global.set_previous_game(timer_ctr, move_ctr, 0, score)
+	get_tree().change_scene("res://hud/EndHud.tscn")
+
+
+func _on_LevelHud_game_skipped():
+	var left = $TileContainer.get_num_of_tiles_left()
+	var skip_ctr = left*150
+	var score = timer_ctr*move_ctr + skip_ctr
+	Global.set_previous_game(timer_ctr, move_ctr, skip_ctr, score)
 	get_tree().change_scene("res://hud/EndHud.tscn")

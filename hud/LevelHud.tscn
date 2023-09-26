@@ -83,5 +83,6 @@ icon = ExtResource( 7 )
 visible = false
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="exit_pressed" from="PauseHud" to="." method="_on_PauseHud_exit_pressed"]
 [connection signal="resume_pressed" from="PauseHud" to="." method="_on_PauseHud_resume_pressed"]

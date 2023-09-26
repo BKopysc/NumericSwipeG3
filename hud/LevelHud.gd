@@ -2,6 +2,7 @@ extends Control
 
 signal game_paused
 signal game_exited
+signal game_skipped
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -40,3 +41,7 @@ func _on_PauseHud_resume_pressed():
 	$PauseHud.hide()
 	emit_signal("game_paused", false)
 
+
+
+func _on_Button_pressed():
+	emit_signal("game_skipped")

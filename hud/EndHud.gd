@@ -10,6 +10,7 @@ func _ready():
 	
 	$CanvasLayer/VBoxContainer/TimeLabel.text += str(Global.previous_timer_ctr)
 	$CanvasLayer/VBoxContainer/MovesLabel.text += str(Global.previous_move_ctr)
+	$CanvasLayer/VBoxContainer/SkipLabel.text += str(Global.previous_skip_ctr)
 	$CanvasLayer/VBoxContainer/HBoxContainer/AllScoreLabel.text += str(Global.previous_game)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

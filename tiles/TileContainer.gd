@@ -199,3 +199,6 @@ func _run_mistake():
 
 func _on_MistakeTimer_timeout():
 	$MistakeRect.hide()
+	
+func get_num_of_tiles_left():
+	return max_score - cleared
