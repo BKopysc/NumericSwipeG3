@@ -5,16 +5,20 @@ export var tile_scene: PackedScene
 # var a = 2
 # var b = "text"
 
-var line_started: bool = false
+signal moved
 
+var line_started: bool = false
 var tile_arr= []
+var tile_child_arr=[]
 var current_tiles = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tile_arr = _create_map(6,6)
+	tile_child_arr = _create_map(6,6)
 	_reset_current_tiles()
 	set_tiles(6, 48)
+	#print(tile_child_arr)
 
 func set_tiles(xy_tiles, tile_size):
 	randomize()
@@ -33,8 +37,7 @@ func set_tiles(xy_tiles, tile_size):
 			tile.connect("pressed", self, "_on_tile_pressed")
 			$Container.add_child(tile)
 			tile_arr[n][m] = value
-			
-			
+			tile_child_arr[n][m] = tile.get_index()
 
 func _on_tile_pressed(pos, location):
 	if(!line_started):
@@ -64,6 +67,7 @@ func _reset_current_tiles():
 	current_tiles = [Vector2(0,0), Vector2(0,0)]
 
 func _end_line(pos:Vector2):
+	
 	var before_pos = Vector2(pos.x, pos.y)
 	var current_pos = $LineRect.rect_position
 	var start_pos = Vector2(before_pos.x,before_pos.y)
@@ -71,10 +75,14 @@ func _end_line(pos:Vector2):
 	if(before_pos.y != current_pos.y):
 		if(before_pos.x != current_pos.x):
 			$LineRect.hide()
+			_run_mistake()
+			emit_signal("moved", false)
 			return
 	elif(before_pos.x != current_pos.x):
 		if(before_pos.y != current_pos.y):
 			$LineRect.hide()
+			_run_mistake()
+			emit_signal("moved", false)
 			return
 
 	if(before_pos.x > current_pos.x):
@@ -99,14 +107,11 @@ func _end_line(pos:Vector2):
 	$LineTimer.start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _calc_tiles():
-	print(current_tiles)
-	var row_direction = 1 if (current_tiles[1].x - current_tiles[0].x) > 0 else -1 #prawo
-	var col_direction = 1 if (current_tiles[1].y - current_tiles[0].y) > 0 else -1 #dol
+	#print(current_tiles)
+	var row_direction = 1 if (current_tiles[1].x - current_tiles[0].x) > 0 else -1 #rigth
+	var col_direction = 1 if (current_tiles[1].y - current_tiles[0].y) > 0 else -1 #down
 	
 	if(current_tiles[1].x == current_tiles[0].x):
 		row_direction = 0
@@ -147,10 +152,36 @@ func _calc_tiles():
 	
 	#TILE CHECKING
 	
+	var val_before = -1
+	for n in range(tiles_to_check.size()):
+		var tile_check_val = tiles_to_check[n].val
+		if tile_check_val >= val_before:
+			val_before = tile_check_val
+		elif tile_check_val == -1:
+			continue
+		else:
+			#print("bad")
+			_run_mistake()
+			emit_signal("moved", false)
+			return
 	
+	for n in range(tiles_to_check.size()):
+		if(tiles_to_check[n].val == -1):
+			continue
+		var tile_check_x = tiles_to_check[n].loc.x
+		var tile_check_y = tiles_to_check[n].loc.y
+		$Container.get_child(tile_child_arr[tile_check_x][tile_check_y]).hide_tile()
+		tile_arr[tile_check_x][tile_check_y] = -1
+		
+	emit_signal("moved", true)
 
 func _on_LineTimer_timeout():
 	$LineRect.hide()
 	_calc_tiles()
 	
+func _run_mistake():
+	$MistakeTimer.start()
+	$MistakeRect.show()
 
+func _on_MistakeTimer_timeout():
+	$MistakeRect.hide()

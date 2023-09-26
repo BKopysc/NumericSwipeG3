@@ -3,6 +3,7 @@ extends Control
 var variant: String
 var value: int
 var location = Vector2(0,0)
+var disabled_tile = false
 
 signal pressed
 
@@ -68,4 +69,11 @@ func _on_SimpleTile_gui_input(event):
 	elif(event is InputEventMouseMotion):
 		if(!$HoverTexture.visible):
 			$HoverTexture.show()
-		
+			
+
+func hide_tile():
+	$TileTexture/TileLabel.hide()
+	$TileTexture.texture = preload("res://assets/tiles/blank.png")
+	disabled_tile = true
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mouse_default_cursor_shape = Control.CURSOR_ARROW

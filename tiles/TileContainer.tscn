@@ -24,8 +24,19 @@ margin_right = 137.0
 margin_bottom = 193.0
 color = Color( 0, 0.156863, 0.627451, 0.831373 )
 
+[node name="MistakeRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 288.0
+margin_bottom = 288.0
+color = Color( 1, 0, 0, 0.219608 )
+
 [node name="LineTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.2
+one_shot = true
+
+[node name="MistakeTimer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="LineTimer" to="." method="_on_LineTimer_timeout"]
+[connection signal="timeout" from="MistakeTimer" to="." method="_on_MistakeTimer_timeout"]
