@@ -13,10 +13,11 @@ config_version=4
 config/name="NumericSwipe-GL2"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://Global.tscn"
 
 [display]
 
@@ -29,6 +30,10 @@ window/stretch/aspect="keep_width"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[locale]
+
+locale_filter=[ 0, [  ] ]
 
 [physics]
 

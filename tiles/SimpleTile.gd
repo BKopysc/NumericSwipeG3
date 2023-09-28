@@ -59,17 +59,18 @@ func _on_SimpleTile_mouse_entered():
 
 func _on_SimpleTile_mouse_exited():
 	$HoverTexture.hide()
-	$SelectedTexture.hide()
+	#$SelectedTexture.hide()
 
 
 func _on_SimpleTile_gui_input(event):
 	if(event is InputEventMouseButton and event.pressed):
-		$SelectedTexture.show()
+		#$SelectedTexture.show()
 		emit_signal("pressed", self.rect_position, self.location)
 
 
 func hide_tile():
 	$TileTexture/TileLabel.hide()
+	$HoverTexture.hide()
 	$TileTexture.texture = preload("res://assets/tiles/blank.png")
 	disabled_tile = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE

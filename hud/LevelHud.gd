@@ -41,6 +41,8 @@ func _on_PauseHud_resume_pressed():
 	$PauseHud.hide()
 	emit_signal("game_paused", false)
 
+func show_skip_hint():
+	$SkipLabel.show()
 
 
 func _on_Button_pressed():

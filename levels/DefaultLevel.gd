@@ -33,6 +33,7 @@ func _on_BasicTimer_timeout():
 
 func _on_TileContainer_moved(is_success):
 	move_ctr += 1
+	Global.play_tile_sound(is_success)
 	$LevelHud/CanvasLayer/HBoxContainerMove/MoveLabel.text = str(move_ctr)
 	
 
@@ -40,6 +41,7 @@ func _on_TileContainer_moved(is_success):
 func _on_TileContainer_game_end():
 	var score = timer_ctr*move_ctr
 	Global.set_previous_game(timer_ctr, move_ctr, 0, score)
+	Global.play_end()
 	get_tree().change_scene("res://hud/EndHud.tscn")
 
 
@@ -48,4 +50,9 @@ func _on_LevelHud_game_skipped():
 	var skip_ctr = left*150
 	var score = timer_ctr*move_ctr + skip_ctr
 	Global.set_previous_game(timer_ctr, move_ctr, skip_ctr, score)
+	Global.play_end()
 	get_tree().change_scene("res://hud/EndHud.tscn")
+
+
+func _on_TileContainer_no_moves():
+	$LevelHud.show_skip_hint()

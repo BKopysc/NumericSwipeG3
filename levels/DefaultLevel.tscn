@@ -23,3 +23,4 @@ position = Vector2( 35, 258 )
 [connection signal="timeout" from="BasicTimer" to="." method="_on_BasicTimer_timeout"]
 [connection signal="game_end" from="TileContainer" to="." method="_on_TileContainer_game_end"]
 [connection signal="moved" from="TileContainer" to="." method="_on_TileContainer_moved"]
+[connection signal="no_moves" from="TileContainer" to="." method="_on_TileContainer_no_moves"]

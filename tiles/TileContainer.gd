@@ -7,6 +7,7 @@ export var tile_scene: PackedScene
 
 signal moved
 signal game_end
+signal no_moves
 
 var line_started: bool = false
 var tile_arr= []
@@ -186,6 +187,9 @@ func _calc_tiles():
 		
 	emit_signal("moved", true)
 	
+	if(_check_if_moves() == false):
+		emit_signal("no_moves")
+	
 	if(cleared == max_score):
 		emit_signal("game_end")
 
@@ -196,6 +200,36 @@ func _on_LineTimer_timeout():
 func _run_mistake():
 	$MistakeTimer.start()
 	$MistakeRect.show()
+
+func _check_if_moves():
+	var rows = tile_arr.size()
+	var cols = tile_arr[0].size()
+	
+	var prev_val = -1
+	
+	for n in rows:
+		for m in cols:
+			var curr_val = tile_arr[n][m]
+			if(curr_val != -1 and prev_val != -1):
+				return true
+			if(m == cols-1):
+				prev_val = -1
+			else:
+				prev_val = curr_val
+		
+	
+	for m in cols:
+		for n in rows:
+			var curr_val = tile_arr[n][m]
+			if(curr_val != -1 and prev_val != -1):
+				return true
+			if(n == rows -1):
+				prev_val = -1
+			else:
+				prev_val = curr_val
+			
+	return false
+	#for n in tile_arr.size()
 
 func _on_MistakeTimer_timeout():
 	$MistakeRect.hide()
