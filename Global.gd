@@ -1,6 +1,6 @@
 extends Node2D
 
-var level_selected = 0
+var level_selected = null
 var session_high_score = 1000000
 var previous_game = 0
 var previous_timer_ctr = 0
@@ -25,6 +25,13 @@ const TileVariants = {
 	EIGHT = "8",
 	NINE = "9"
 	}
+	
+enum LevelVariants{
+	LEGACY_EASY,
+	LEGACY_HARD,
+	STANDARD_EASY,
+	STANDARD_HARD
+}
 	
 func set_previous_game(timer_ctr, move_ctr, skip_ctr, score):
 	previous_game = score

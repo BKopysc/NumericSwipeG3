@@ -42,16 +42,19 @@ margin_left = -180.0
 margin_top = -95.0
 margin_right = 180.0
 margin_bottom = 100.0
+custom_constants/separation = 15
 alignment = 1
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+margin_top = 12.0
 margin_right = 360.0
-margin_bottom = 25.0
+margin_bottom = 37.0
 theme = ExtResource( 3 )
 text = "Time: "
 align = 1
 
 [node name="Label4" type="Label" parent="CanvasLayer/VBoxContainer"]
+visible = false
 margin_top = 29.0
 margin_right = 360.0
 margin_bottom = 54.0
@@ -60,41 +63,44 @@ text = "x"
 align = 1
 
 [node name="MovesLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 58.0
+margin_top = 52.0
 margin_right = 360.0
-margin_bottom = 83.0
+margin_bottom = 77.0
 theme = ExtResource( 3 )
 text = "Moves: "
 align = 1
 
 [node name="MovesLabel2" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 87.0
+visible = false
+margin_top = 63.0
 margin_right = 360.0
-margin_bottom = 112.0
+margin_bottom = 88.0
 theme = ExtResource( 3 )
 text = "+"
 align = 1
 
 [node name="SkipLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 116.0
+margin_top = 92.0
 margin_right = 360.0
-margin_bottom = 141.0
+margin_bottom = 117.0
 theme = ExtResource( 3 )
 text = "Skip: "
 align = 1
 
 [node name="Empty" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 145.0
+visible = false
+margin_top = 120.0
 margin_right = 360.0
-margin_bottom = 159.0
+margin_bottom = 134.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-margin_top = 163.0
+margin_top = 132.0
 margin_right = 360.0
-margin_bottom = 213.0
+margin_bottom = 182.0
 alignment = 1
 
 [node name="Label4" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+visible = false
 margin_left = 163.0
 margin_right = 193.0
 margin_bottom = 50.0
@@ -102,8 +108,8 @@ custom_fonts/font = ExtResource( 1 )
 text = "="
 
 [node name="AllScoreLabel" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-margin_left = 197.0
-margin_right = 197.0
+margin_left = 180.0
+margin_right = 180.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 1 )
 

@@ -31,7 +31,8 @@ func _set_tiles(xy_tiles, tile_size, level):
 	var current_x = 0
 	var current_y = 0
 	
-	var random_range = 10 if level == 0 else 100
+	var random_range = 10 if (level == Global.LevelVariants.LEGACY_EASY 
+		or level == Global.LevelVariants.STANDARD_EASY) else 100
 	
 	for n in xy_tiles:
 		for m in xy_tiles:
@@ -41,7 +42,7 @@ func _set_tiles(xy_tiles, tile_size, level):
 			var x= m*tile_size
 			var y= n*tile_size
 			tile.set_position(Vector2(x,y))
-			if(level == 0):
+			if(level == Global.LevelVariants.LEGACY_EASY or level == Global.LevelVariants.STANDARD_EASY):
 				tile.set_tile(str(value), value,loc)
 			else:
 				tile.set_tile(Global.TileVariants.DEFAULT, value, loc)
@@ -175,6 +176,8 @@ func _calc_tiles():
 			_run_mistake()
 			emit_signal("moved", false)
 			return
+			
+	var moved_combo = 0
 	
 	for n in range(tiles_to_check.size()):
 		if(tiles_to_check[n].val == -1):
@@ -184,8 +187,9 @@ func _calc_tiles():
 		$Container.get_child(tile_child_arr[tile_check_x][tile_check_y]).hide_tile()
 		tile_arr[tile_check_x][tile_check_y] = -1
 		cleared += 1
+		moved_combo += 1
 		
-	emit_signal("moved", true)
+	emit_signal("moved", true, moved_combo)
 	
 	if(_check_if_moves() == false):
 		emit_signal("no_moves")

@@ -18,13 +18,15 @@ func _ready():
 #func _process(delta):
 #	pass
 func update_timer(time_count):
-	var minutes = floor(time_count/60)
-	var seconds = time_count-minutes*60
-	
-	var minutes_label = "0"+str(minutes) if minutes < 10 else ""+str(minutes)
-	var second_label = "0"+str(seconds) if seconds < 10 else "" + str(seconds)
-	
-	$CanvasLayer/HBoxContainerTimer/TimeLabel.text = minutes_label + ":" + second_label
+	#var minutes = floor(time_count/60)
+	#var seconds = time_count-minutes*60
+	#var minutes_label = "0"+str(minutes) if minutes < 10 else ""+str(minutes)
+	#var second_label = "0"+str(seconds) if seconds < 10 else "" + str(seconds)
+	#$CanvasLayer/HBoxContainerTimer/TimeLabel.text = minutes_label + ":" + second_label
+	var time_str = str(time_count)
+	if time_str.split(".").size() == 1:
+		time_str = time_str + ".0"
+	$CanvasLayer/HBoxContainerTimer/TimeLabel.text = time_str
 
 func _on_PauseButton_pressed():
 	$PauseHud.show()
