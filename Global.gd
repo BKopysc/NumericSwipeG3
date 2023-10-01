@@ -1,6 +1,6 @@
 extends Node2D
 
-var level_selected = null
+var level_selected = LevelVariants.STANDARD_EASY
 var session_high_score = 1000000
 var previous_game = 0
 var previous_timer_ctr = 0
@@ -31,6 +31,19 @@ enum LevelVariants{
 	LEGACY_HARD,
 	STANDARD_EASY,
 	STANDARD_HARD
+}
+
+const min_score_multiplier = 20
+const skip_score_val = 200
+const time_score_multiplier = 20 
+const hard_game_multiplier = 0.7
+
+const ScorePoints = {
+	2: 10*min_score_multiplier,
+	3: 4*min_score_multiplier,
+	4: 2*min_score_multiplier,
+	5: 1*min_score_multiplier,
+	6: 0
 }
 	
 func set_previous_game(timer_ctr, move_ctr, skip_ctr, score):

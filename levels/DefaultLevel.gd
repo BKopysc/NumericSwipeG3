@@ -34,33 +34,43 @@ func _on_BasicTimer_timeout():
 
 func _on_TileContainer_moved(is_success, moved_combo = 0):
 	move_ctr += 1
-	print(moved_combo)
 	moved_combos_dict[moved_combo] += 1
 	Global.play_tile_sound(is_success)
 	$LevelHud/CanvasLayer/HBoxContainerMove/MoveLabel.text = str(move_ctr)
 
 
 func _on_TileContainer_game_end():
-	var score = timer_ctr*move_ctr*10
+	var score = _calc_game_results(self.level_selected)
 	Global.set_previous_game(timer_ctr, move_ctr, 0, score)
 	Global.play_end()
 	get_tree().change_scene("res://hud/EndHud.tscn")
 
-func _calc_game_results(level_id, is_skipped):
+func _calc_game_results(level_id, skipped_ctr = 0, is_full_skipped = false):
 	var score = 0
+	score += skipped_ctr * Global.skip_score_val
 	
-	if(level_id == Global.LevelVariants.LEGACY_EASY || level_id == Global.LevelVariants.STANDARD_EASY ):
-		score += timer_ctr*10*move_ctr
-		print("easy")
-	else:
-		score += floor(timer_ctr*10*move_ctr*0.7)
+	if(is_full_skipped): return
+	
+	if(level_id == Global.LevelVariants.STANDARD_EASY || level_id == Global.LevelVariants.STANDARD_HARD):
+		var part_score = 0
+		for n in self.moved_combos_dict.keys():
+			part_score += moved_combos_dict[n] * Global.ScorePoints.get(n)
+		score += part_score + timer_ctr*Global.time_score_multiplier
+		
+		if(level_id == Global.LevelVariants.STANDARD_HARD):
+			score += floor(score*Global.hard_game_multiplier)
 			
+	elif(level_id == Global.LevelVariants.LEGACY_EASY):
+		score += timer_ctr*move_ctr
+	elif(level_id == Global.LevelVariants.LEGACY_HARD):
+		score += floor(timer_ctr*10*move_ctr*Global.hard_game_multiplier)
+		
+	return score
 
 func _on_LevelHud_game_skipped():
 	var left = $TileContainer.get_num_of_tiles_left()
-	var skip_ctr = left*150
-	var score = timer_ctr*move_ctr*10 + skip_ctr
-	Global.set_previous_game(timer_ctr, move_ctr, skip_ctr, score)
+	var score = _calc_game_results(self.level_selected, left)
+	Global.set_previous_game(timer_ctr, move_ctr, left, score)
 	Global.play_end()
 	get_tree().change_scene("res://hud/EndHud.tscn")
 

@@ -42,13 +42,12 @@ margin_left = -180.0
 margin_top = -95.0
 margin_right = 180.0
 margin_bottom = 100.0
-custom_constants/separation = 15
+custom_constants/separation = 20
 alignment = 1
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 12.0
 margin_right = 360.0
-margin_bottom = 37.0
+margin_bottom = 25.0
 theme = ExtResource( 3 )
 text = "Time: "
 align = 1
@@ -63,9 +62,9 @@ text = "x"
 align = 1
 
 [node name="MovesLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 52.0
+margin_top = 45.0
 margin_right = 360.0
-margin_bottom = 77.0
+margin_bottom = 70.0
 theme = ExtResource( 3 )
 text = "Moves: "
 align = 1
@@ -80,9 +79,9 @@ text = "+"
 align = 1
 
 [node name="SkipLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 92.0
+margin_top = 90.0
 margin_right = 360.0
-margin_bottom = 117.0
+margin_bottom = 115.0
 theme = ExtResource( 3 )
 text = "Skip: "
 align = 1
@@ -94,9 +93,9 @@ margin_right = 360.0
 margin_bottom = 134.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-margin_top = 132.0
+margin_top = 135.0
 margin_right = 360.0
-margin_bottom = 182.0
+margin_bottom = 215.0
 alignment = 1
 
 [node name="Label4" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
@@ -110,8 +109,11 @@ text = "="
 [node name="AllScoreLabel" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 margin_left = 180.0
 margin_right = 180.0
-margin_bottom = 50.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
 custom_fonts/font = ExtResource( 1 )
+align = 1
+valign = 1
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchor_left = 0.5

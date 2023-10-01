@@ -128,7 +128,7 @@ rect_min_size = Vector2( 100, 100 )
 theme = ExtResource( 2 )
 text = "Hard"
 
-[node name="Button" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -167,3 +167,4 @@ text = "Legacy Mode"
 [connection signal="pressed" from="ControlLegacy/HBoxContainer/HardStandardButton" to="." method="_on_HardStandardButton_pressed"]
 [connection signal="pressed" from="ControlNew/HBoxContainer/EasyStandardButton" to="." method="_on_EasyStandardButton_pressed"]
 [connection signal="pressed" from="ControlNew/HBoxContainer/HardStandardButton" to="." method="_on_HardStandardButton_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

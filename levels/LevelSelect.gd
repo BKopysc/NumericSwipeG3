@@ -39,3 +39,7 @@ func _on_EasyStandardButton_pressed():
 
 func _on_HardStandardButton_pressed():
 	_change_scene(Global.LevelVariants.STANDARD_HARD)
+
+
+func _on_BackButton_pressed():
+	get_tree().change_scene("res://Main.tscn")
