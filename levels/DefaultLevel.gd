@@ -70,7 +70,8 @@ func _calc_game_results(level_id, skipped_ctr = 0, is_full_skipped = false):
 		if(level_id == Global.LevelVariants.STANDARD_HARD):
 			score += floor(score*Global.hard_game_multiplier)
 			
-	elif(level_id == Global.LevelVariants.LEGACY_EASY):
+	elif(level_id == Global.LevelVariants.LEGACY_EASY 
+		|| level_id == Global.LevelVariants.LEGACY_FIRST):
 		score += timer_ctr*move_ctr
 	elif(level_id == Global.LevelVariants.LEGACY_HARD):
 		score += floor(timer_ctr*move_ctr*Global.hard_game_multiplier)
