@@ -5,7 +5,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if(Global.is_high_score):
-		$CanvasLayer/NewBestScoreLabel.show()
+		#$CanvasLayer/NewBestScoreLabel.show()
 		Global.disable_high_score_flag()
 	
 	$CanvasLayer/VBoxContainer/TimeLabel.text += str(Global.previous_timer_ctr)

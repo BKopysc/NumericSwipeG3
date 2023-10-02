@@ -27,6 +27,7 @@ const TileVariants = {
 	}
 	
 enum LevelVariants{
+	LEGACY_FIRST,
 	LEGACY_EASY,
 	LEGACY_HARD,
 	STANDARD_EASY,

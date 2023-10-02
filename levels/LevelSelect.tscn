@@ -149,7 +149,7 @@ margin_left = -116.5
 margin_top = 5.0
 margin_right = 116.5
 margin_bottom = 56.0
-color = Color( 0, 0, 0, 0.105882 )
+color = Color( 0, 0, 0, 0.372549 )
 
 [node name="LegacyMenu" type="MenuButton" parent="ColorRectLegacy"]
 anchor_left = 0.5

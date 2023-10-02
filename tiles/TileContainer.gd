@@ -32,6 +32,7 @@ func _set_tiles(xy_tiles, tile_size, level):
 	var current_y = 0
 	
 	var random_range = 10 if (level == Global.LevelVariants.LEGACY_EASY 
+		or level == Global.LevelVariants.LEGACY_FIRST
 		or level == Global.LevelVariants.STANDARD_EASY) else 100
 	
 	for n in xy_tiles:
@@ -42,7 +43,9 @@ func _set_tiles(xy_tiles, tile_size, level):
 			var x= m*tile_size
 			var y= n*tile_size
 			tile.set_position(Vector2(x,y))
-			if(level == Global.LevelVariants.LEGACY_EASY or level == Global.LevelVariants.STANDARD_EASY):
+			if(level == Global.LevelVariants.LEGACY_EASY 
+				or level == Global.LevelVariants.LEGACY_FIRST
+				or level == Global.LevelVariants.STANDARD_EASY):
 				tile.set_tile(str(value), value,loc)
 			else:
 				tile.set_tile(Global.TileVariants.DEFAULT, value, loc)
