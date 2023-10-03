@@ -11,6 +11,10 @@ var is_high_score = false
 var is_music = true
 var is_sound = true
 
+const FileName = {
+	username = "user://username.save"
+}
+
 const light_theme = {background = "#5180cc", 
 	tile_active_background = "#ffffff", 
 	tile_text = "#000000"}

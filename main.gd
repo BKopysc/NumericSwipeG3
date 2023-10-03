@@ -5,11 +5,15 @@ extends Control
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_set_theme_btn()
 	_toggle_music(Global.is_music)
+	var username = $SavesServiceNode.check_if_user_is_saved() 
+	if(username == ""):
+		$UsernameHud.show()
+	else:
+		$CanvasLayer/UserButton.text = username
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,3 +59,12 @@ func _on_ThemeButton_pressed():
 	Global.toggle_theme()
 	_set_theme_btn()
 	$Background.refresh_color()
+
+
+func _on_UsernameHud_success(user_edit):
+	$UsernameHud.hide()
+	$CanvasLayer/UserButton.text = user_edit
+
+
+func _on_UserButton_pressed():
+	$UsernameHud.show()

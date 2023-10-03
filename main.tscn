@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/hud/logo.svg" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://assets/hud/sound32.png" type="Texture" id=5]
 [ext_resource path="res://assets/hud/music32.png" type="Texture" id=6]
 [ext_resource path="res://assets/hud/night32.png" type="Texture" id=7]
+[ext_resource path="res://services/SavesService.tscn" type="PackedScene" id=8]
+[ext_resource path="res://hud/UsernameHud.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/hud/user_icon.png" type="Texture" id=10]
+[ext_resource path="res://userbutton-theme.tres" type="Theme" id=11]
 
 [node name="Main" type="Control"]
 script = ExtResource( 1 )
@@ -109,10 +113,28 @@ theme = ExtResource( 3 )
 icon = ExtResource( 7 )
 icon_align = 1
 
+[node name="UserButton" type="Button" parent="CanvasLayer"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 24.0
+margin_bottom = 40.0
+theme = ExtResource( 11 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+icon = ExtResource( 10 )
+align = 0
+
 [node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="SavesServiceNode" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="UsernameHud" parent="." instance=ExtResource( 9 )]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/MusicButton" to="." method="_on_MusicButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/SoundButton" to="." method="_on_SoundButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/ThemeButton" to="." method="_on_ThemeButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserButton" to="." method="_on_UserButton_pressed"]
+[connection signal="success" from="UsernameHud" to="." method="_on_UsernameHud_success"]

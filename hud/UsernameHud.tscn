@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://basic-theme.tres" type="Theme" id=1]
+[ext_resource path="res://hud/UsernameHud.gd" type="Script" id=2]
+[ext_resource path="res://font-micra-mini.tres" type="DynamicFont" id=3]
+[ext_resource path="res://services/SavesService.tscn" type="PackedScene" id=4]
+
+[sub_resource type="InputEventAction" id=1]
+action = "confirm"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="UsernameHud" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="SavesServiceNode" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 94, 386 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.545098 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -143.0
+margin_top = -92.0
+margin_right = 144.0
+margin_bottom = 120.0
+color = Color( 0.396078, 0.466667, 0.494118, 1 )
+
+[node name="Label" type="Label" parent="ColorRect2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.5
+margin_top = 17.0
+margin_right = 88.5
+margin_bottom = 42.0
+theme = ExtResource( 1 )
+text = "Set name"
+align = 1
+
+[node name="UserEdit" type="LineEdit" parent="ColorRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -109.5
+margin_top = -29.0
+margin_right = 109.5
+margin_bottom = 8.0
+theme = ExtResource( 1 )
+align = 1
+max_length = 15
+
+[node name="ErrorLabel" type="Label" parent="ColorRect2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -47.0
+margin_top = -92.0
+margin_right = 47.0
+margin_bottom = -67.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Wrong name!"
+
+[node name="OkButton" type="Button" parent="ColorRect2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -86.5
+margin_top = -54.0
+margin_right = 86.5
+margin_bottom = -14.0
+rect_min_size = Vector2( 0, 40 )
+theme = ExtResource( 1 )
+shortcut = SubResource( 2 )
+text = "Good!"
+
+[connection signal="pressed" from="ColorRect2/OkButton" to="." method="_on_OkButton_pressed"]
