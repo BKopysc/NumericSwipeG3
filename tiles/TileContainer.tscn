@@ -31,7 +31,7 @@ margin_bottom = 288.0
 color = Color( 1, 0, 0, 0.219608 )
 
 [node name="LineTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 one_shot = true
 
 [node name="MistakeTimer" type="Timer" parent="."]

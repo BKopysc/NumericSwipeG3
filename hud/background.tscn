@@ -1,9 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://hud/Background.gd" type="Script" id=1]
 
 [node name="Background" type="CanvasLayer"]
 layer = -10
+script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.317647, 0.501961, 0.8, 1 )
+color = Color( 0.133333, 0.133333, 0.184314, 1 )

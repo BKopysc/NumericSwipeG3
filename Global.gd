@@ -11,6 +11,10 @@ var is_high_score = false
 var is_music = true
 var is_sound = true
 
+const light_theme = {background = "#5180cc", text = "white"}
+const dark_theme = {background = "#22222f", text = "gray"}
+var active_theme = light_theme
+
 const TileVariants = {
 	BLANK = "blank",
 	DEFAULT = "default",
@@ -46,7 +50,13 @@ const ScorePoints = {
 	5: 1*min_score_multiplier,
 	6: 0
 }
-	
+
+func toggle_theme():
+	if(active_theme == light_theme):
+		active_theme = dark_theme
+	else:
+		active_theme = light_theme
+
 func set_previous_game(timer_ctr, move_ctr, skip_ctr, score):
 	previous_game = score
 	previous_move_ctr = move_ctr

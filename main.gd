@@ -17,15 +17,15 @@ func _ready():
 
 func _toggle_music(state):
 	if(state):
-		$CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music.png")
+		$CanvasLayer/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music32.png")
 	else:
-		$CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music_mute.png")
+		$CanvasLayer/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music_mute32.png")
 	
 func _toggle_sound(state):
 	if(state):
-		$CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound.png")
+		$CanvasLayer/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound32.png")
 	else:
-		$CanvasLayer/MarginContainer2/VBoxContainer/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound-mute.png")
+		$CanvasLayer/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound-mute32.png")
 	
 
 func _on_PlayButton_pressed():
@@ -38,7 +38,12 @@ func _on_MusicButton_pressed():
 
 func _on_SoundButton_pressed():
 	_toggle_sound(Global.toggle_sound())
-
+	$Background.refresh_color()
 
 func _on_HelpButton_pressed():
 	get_tree().change_scene("res://hud/HelpHud.tscn")
+
+
+func _on_ThemeButton_pressed():
+	Global.toggle_theme()
+	$Background.refresh_color()

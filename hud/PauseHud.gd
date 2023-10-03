@@ -19,16 +19,16 @@ func _ready():
 
 func _toggle_music(state):
 	if(state):
-		$ColorRect2/MarginContainer/VBoxContainer/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music32.png")
+		$ColorRect2/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music32.png")
 	else:
-		$ColorRect2/MarginContainer/VBoxContainer/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music_mute32.png")
+		$ColorRect2/HBoxContainer/MusicButton.icon = preload("res://assets/hud/music_mute32.png")
 
 
 func _toggle_sound(state):
 	if(state):
-		$ColorRect2/MarginContainer/VBoxContainer/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound32.png")
+		$ColorRect2/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound32.png")
 	else:
-		$ColorRect2/MarginContainer/VBoxContainer/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound-mute32.png")
+		$ColorRect2/HBoxContainer/SoundButton.icon = preload("res://assets/hud/sound-mute32.png")
 
 func _on_ResumeButton_pressed():
 	emit_signal("resume_pressed")

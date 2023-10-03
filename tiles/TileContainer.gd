@@ -201,8 +201,8 @@ func _calc_tiles():
 		emit_signal("game_end")
 
 func _on_LineTimer_timeout():
-	$LineRect.hide()
 	_calc_tiles()
+	$LineRect.hide()
 	
 func _run_mistake():
 	$MistakeTimer.start()
