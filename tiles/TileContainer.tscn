@@ -10,7 +10,7 @@ tile_scene = ExtResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 288.0
 margin_bottom = 288.0
-color = Color( 1, 1, 1, 0.454902 )
+color = Color( 0.780392, 0.780392, 0.780392, 0 )
 
 [node name="Container" type="Container" parent="."]
 margin_right = 40.0

@@ -9,7 +9,7 @@ signal pressed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	_set_theme()
 	
 
 
@@ -51,6 +51,9 @@ func set_tile(n_variant: String, n_value: int, n_location: Vector2):
 #func _process(delta):
 #	pass
 
+func _set_theme():
+	$TileBackground.color = Global.active_theme.tile_active_background
+	$TileTexture/TileLabel.add_color_override("font_color", Global.active_theme.tile_text)
 
 func _on_SimpleTile_mouse_entered():
 	if(!$HoverTexture.visible):
@@ -70,6 +73,7 @@ func _on_SimpleTile_gui_input(event):
 
 func hide_tile():
 	$TileTexture/TileLabel.hide()
+	$TileBackground.hide()
 	$HoverTexture.hide()
 	$TileTexture.texture = preload("res://assets/tiles/blank.png")
 	disabled_tile = true

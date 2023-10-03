@@ -11,8 +11,12 @@ var is_high_score = false
 var is_music = true
 var is_sound = true
 
-const light_theme = {background = "#5180cc", text = "white"}
-const dark_theme = {background = "#22222f", text = "gray"}
+const light_theme = {background = "#5180cc", 
+	tile_active_background = "#ffffff", 
+	tile_text = "#000000"}
+const dark_theme = {background = "#22222f", 
+	tile_active_background = "#3b3b3b",
+	tile_text = "#e0e0e0"}
 var active_theme = light_theme
 
 const TileVariants = {

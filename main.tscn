@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/hud/logo.svg" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://hud/Background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/hud/sound32.png" type="Texture" id=5]
 [ext_resource path="res://assets/hud/music32.png" type="Texture" id=6]
+[ext_resource path="res://assets/hud/night32.png" type="Texture" id=7]
 
 [node name="Main" type="Control"]
 script = ExtResource( 1 )
@@ -15,10 +16,10 @@ script = ExtResource( 1 )
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -146.0
-margin_top = -17.0
-margin_right = 254.0
-margin_bottom = 383.0
+margin_left = -142.0
+margin_top = 8.0
+margin_right = 258.0
+margin_bottom = 408.0
 rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 2 )
 
@@ -99,11 +100,14 @@ text = "Help"
 [node name="ThemeButton" type="Button" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -62.0
+margin_left = -69.0
 margin_top = 17.0
 margin_right = -19.0
-margin_bottom = 57.0
-text = "Light"
+margin_bottom = 67.0
+rect_min_size = Vector2( 50, 50 )
+theme = ExtResource( 3 )
+icon = ExtResource( 7 )
+icon_align = 1
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
 

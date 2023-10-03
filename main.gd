@@ -8,12 +8,19 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_set_theme_btn()
 	_toggle_music(Global.is_music)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _set_theme_btn():
+	if(Global.active_theme == Global.light_theme):
+		$CanvasLayer/ThemeButton.icon = preload("res://assets/hud/night32.png")
+	else:
+		$CanvasLayer/ThemeButton.icon = preload("res://assets/hud/sun32.png")
 
 func _toggle_music(state):
 	if(state):
@@ -46,4 +53,5 @@ func _on_HelpButton_pressed():
 
 func _on_ThemeButton_pressed():
 	Global.toggle_theme()
+	_set_theme_btn()
 	$Background.refresh_color()
