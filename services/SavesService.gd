@@ -5,6 +5,11 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+const FileName = {
+	username = "user://username.save",
+	local_scores = "user://scores.save"
+}
+
 func _check_system_persistent():
 	return OS.is_userfs_persistent()
 
@@ -13,7 +18,7 @@ func check_if_user_is_saved():
 		return ""
 	
 	var save = File.new()
-	var path = Global.FileName.username
+	var path = FileName.username
 	
 	if not save.file_exists(path):
 		return ""
@@ -26,7 +31,7 @@ func check_if_user_is_saved():
 	
 func save_user(username):
 	var save = File.new()
-	var path = Global.FileName.username
+	var path = FileName.username
 	save.open(path, File.WRITE)
 	save.store_string(username)
 	save.close()
@@ -36,7 +41,20 @@ func save_user(username):
 		return true
 	else:
 		return false
-	
-	
+
+func save_score(score_type):
+	check_if_score_exists()
 	
 
+func check_if_score_exists():
+	var save = File.new()
+	var path = FileName.local_scores
+	
+	if not save.file_exists(path):	
+		save.open(path, File.WRITE)
+		var dict = {}
+		for n in Global.LocalScores.values():
+			dict[n] = 0
+		var json = to_json(dict)
+		save.store_line(json)
+		save.close()

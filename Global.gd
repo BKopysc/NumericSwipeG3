@@ -12,7 +12,15 @@ var is_music = true
 var is_sound = true
 
 const FileName = {
-	username = "user://username.save"
+	username = "user://username.save",
+}
+
+const LocalScores = {
+	legacy_first = "legacy_first",
+	legacy_easy = "legacy_easy",
+	legacy_hard = "legacy_hard",
+	standard_easy = "standard_easy",
+	standard_hard = "standard_hard"
 }
 
 const light_theme = {background = "#5180cc", 

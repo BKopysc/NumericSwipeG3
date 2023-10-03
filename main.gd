@@ -10,6 +10,7 @@ func _ready():
 	_set_theme_btn()
 	_toggle_music(Global.is_music)
 	var username = $SavesServiceNode.check_if_user_is_saved() 
+	$SavesServiceNode.check_if_score_exists()
 	if(username == ""):
 		$UsernameHud.show()
 	else:
