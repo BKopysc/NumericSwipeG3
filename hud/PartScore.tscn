@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://font-micra-mini.tres" type="DynamicFont" id=1]
+[ext_resource path="res://font-micra-mini-bold.tres" type="DynamicFont" id=2]
+[ext_resource path="res://hud/PartScore.gd" type="Script" id=3]
+
+[node name="PartScoreControl" type="VBoxContainer"]
+margin_right = 149.0
+margin_bottom = 33.0
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 149.0
+margin_bottom = 18.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="PlayerPos" type="Label" parent="HBoxContainer"]
+margin_right = 14.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "1."
+
+[node name="PlayerName" type="Label" parent="HBoxContainer"]
+margin_left = 24.0
+margin_right = 64.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "Bart"
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+margin_left = 74.0
+margin_right = 74.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="PlayerScore" type="Label" parent="HBoxContainer"]
+margin_left = 119.0
+margin_right = 149.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "150"
+
+[node name="Spacer2" type="ColorRect" parent="."]
+visible = false
+margin_top = 22.0
+margin_right = 180.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="Separator" type="ColorRect" parent="."]
+visible = false
+margin_top = 22.0
+margin_right = 180.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 2 )
+color = Color( 1, 1, 1, 0.223529 )
+
+[node name="Spacer" type="ColorRect" parent="."]
+visible = false
+margin_top = 22.0
+margin_right = 175.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 10 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+margin_top = 22.0
+margin_right = 175.0
+margin_bottom = 37.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 175.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 1 )
+text = "1. Pablo 15808008"
